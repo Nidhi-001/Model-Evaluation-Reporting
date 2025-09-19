@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Evaluation Report</title>
+    <style>
+        body { 
+            font-family: Arial,
+            sans-serif; 
+            margin: 30px; 
+            background: #f5f7fa; 
+            }
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 40px; 
+        }
+        h2 { 
+            color: #34495e; 
+            border-bottom: 2px solid #ddd; 
+            padding-bottom: 5px; 
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-bottom: 40px; 
+        }
+
+        table th, table td { 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            text-align: center; 
+        }
+        table th { 
+            background-color: #3498db; 
+            color: white; 
+        }
+        .section { 
+            margin-bottom: 60px; 
+        }
+        .visuals { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+        }
+        .visual { 
+            margin: 15px; 
+            text-align: center; 
+        }
+        .visual img { 
+            width: 350px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>📊 Model Evaluation Report</h1>
+    
+
+    <!-- Metrics Table -->
+    <div class="section">
+        <h2>Metrics Comparison</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                {% for model_name in results.keys() %}
+                <th>{{ model_name }}</th>
+                {% endfor %}
+            </tr>
+            {% set first_model = results.values() | list | first %}
+            {% for metric in first_model.keys() %}
+            <tr>
+                <td>{{ metric }}</td>
+                {% for model_name, metrics in results.items() %}
+                <td>{{ "%.4f"|format(metrics[metric]) }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- ROC Curves -->
+    <div class="section">
+        <h2>ROC Curves</h2>
+        <div class="visuals">
+            {% for model_name in results.keys() %}
+            <div class="visual">
+                <h4>{{ model_name }}</h4>
+                <!-- <img src="../figs/{{model_name}}_roc_{{timestamp}}.png" alt="ROC Curve"> -->
+                <img src="../figs/roc_{{model_name}}_{{timestamp}}.png" alt="ROC Curve">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Precision-Recall Curves -->
+    <div class="section">
+        <h2>Precision-Recall Curves</h2>
+        <div class="visuals">
+            {% for model_name in results.keys() %}
+            <div class="visual">
+                <h4>{{ model_name }}</h4>
+                <!-- <img src="../figs/{{model_name}}_pr_{{timestamp}}.png" alt="PR Curve"> -->
+                <img src="../figs/pr_{{model_name}}_{{timestamp}}.png" alt="PR Curve">
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Confusion Matrices -->
+    <div class="section">
+        <h2>Confusion Matrices</h2>
+        <div class="visuals">
+            {% for model_name in results.keys() %}
+            <div class="visual">
+                <h4>{{ model_name }}</h4>
+                <!-- <img src="../figs/{{model_name}}_cm_{{timestamp}}.png" alt="Confusion Matrix"> -->
+                 <img src="../figs/cm_{{model_name}}_{{timestamp}}.png" alt="Confusion Matrix">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>

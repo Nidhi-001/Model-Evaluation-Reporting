@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Evaluation Report</title>
+    <style>
+        body { 
+            font-family: Arial,
+            sans-serif; 
+            margin: 30px; 
+            background: #f5f7fa; 
+            }
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 40px; 
+        }
+        h2 { 
+            color: #34495e; 
+            border-bottom: 2px solid #ddd; 
+            padding-bottom: 5px; 
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-bottom: 40px; 
+        }
+
+        table th, table td { 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            text-align: center; 
+        }
+        table th { 
+            background-color: #3498db; 
+            color: white; 
+        }
+        .section { 
+            margin-bottom: 60px; 
+        }
+        .visuals { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+        }
+        .visual { 
+            margin: 15px; 
+            text-align: center; 
+        }
+        .visual img { 
+            width: 350px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>📊 Model Evaluation Report</h1>
+    
+
+    <!-- Metrics Table -->
+    <div class="section">
+        <h2>Metrics Comparison</h2>
+        <table>
+            <tr>
+                <th>Metric</th>
+                
+                <th>LogisticRegression</th>
+                
+                <th>RandomForest</th>
+                
+            </tr>
+            
+            
+            <tr>
+                <td>Accuracy</td>
+                
+                <td>0.9825</td>
+                
+                <td>0.9649</td>
+                
+            </tr>
+            
+            <tr>
+                <td>F1 Score</td>
+                
+                <td>0.9877</td>
+                
+                <td>0.9750</td>
+                
+            </tr>
+            
+            <tr>
+                <td>RMSE</td>
+                
+                <td>0.1379</td>
+                
+                <td>0.1584</td>
+                
+            </tr>
+            
+            <tr>
+                <td>MAE</td>
+                
+                <td>0.0373</td>
+                
+                <td>0.0626</td>
+                
+            </tr>
+            
+            <tr>
+                <td>ROC-AUC</td>
+                
+                <td>0.9956</td>
+                
+                <td>0.9956</td>
+                
+            </tr>
+            
+        </table>
+    </div>
+
+    <!-- ROC Curves -->
+    <div class="section">
+        <h2>ROC Curves</h2>
+        <div class="visuals">
+            
+            <div class="visual">
+                <h4>LogisticRegression</h4>
+                <!-- <img src="../figs/LogisticRegression_roc_2025_09_16-11_04_03.png" alt="ROC Curve"> -->
+                <img src="../figs/roc_LogisticRegression_2025_09_16-11_04_03.png" alt="ROC Curve">
+            </div>
+            
+            <div class="visual">
+                <h4>RandomForest</h4>
+                <!-- <img src="../figs/RandomForest_roc_2025_09_16-11_04_03.png" alt="ROC Curve"> -->
+                <img src="../figs/roc_RandomForest_2025_09_16-11_04_03.png" alt="ROC Curve">
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Precision-Recall Curves -->
+    <div class="section">
+        <h2>Precision-Recall Curves</h2>
+        <div class="visuals">
+            
+            <div class="visual">
+                <h4>LogisticRegression</h4>
+                <!-- <img src="../figs/LogisticRegression_pr_2025_09_16-11_04_03.png" alt="PR Curve"> -->
+                <img src="../figs/pr_LogisticRegression_2025_09_16-11_04_03.png" alt="PR Curve">
+                
+            </div>
+            
+            <div class="visual">
+                <h4>RandomForest</h4>
+                <!-- <img src="../figs/RandomForest_pr_2025_09_16-11_04_03.png" alt="PR Curve"> -->
+                <img src="../figs/pr_RandomForest_2025_09_16-11_04_03.png" alt="PR Curve">
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Confusion Matrices -->
+    <div class="section">
+        <h2>Confusion Matrices</h2>
+        <div class="visuals">
+            
+            <div class="visual">
+                <h4>LogisticRegression</h4>
+                <!-- <img src="../figs/LogisticRegression_cm_2025_09_16-11_04_03.png" alt="Confusion Matrix"> -->
+                 <img src="../figs/cm_LogisticRegression_2025_09_16-11_04_03.png" alt="Confusion Matrix">
+            </div>
+            
+            <div class="visual">
+                <h4>RandomForest</h4>
+                <!-- <img src="../figs/RandomForest_cm_2025_09_16-11_04_03.png" alt="Confusion Matrix"> -->
+                 <img src="../figs/cm_RandomForest_2025_09_16-11_04_03.png" alt="Confusion Matrix">
+            </div>
+            
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
